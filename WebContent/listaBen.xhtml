@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	<title>Lista</title>
+	</h:head>
+	<h:body>
+	<h:form>
+	<h1>Lista Bens</h1>
+	<p:dataTable  value="#{benControllerPedro.lista}" var="ben" border="1" id="ben"
+	 paginator="true" rows="5" 
+emptyMessage="Nenhuma ordem cadastrada!" >
+
+<p:column headerText="Id">
+<h:outputText value="#{ben.id}" />
+</p:column>
+
+<p:column headerText="Nome">
+<h:outputText value="#{ben.nome}" />
+</p:column>
+
+<p:column headerText="Especificação">
+<h:outputText value="#{ben.especificacao}" />
+</p:column>
+
+<p:column headerText="Valor">
+<h:outputText value="#{ben.valor}" />
+</p:column>
+
+<p:column headerText="Departamento">
+<h:outputText value="#{ben.derpartamento.departamento}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText  value="Ação"/>
+</f:facet>
+<p:commandButton value="Editar"
+ action="#{benControllerPedro.editar}">
+ <f:setPropertyActionListener value="#{bem}" target="#{benControllerPedro.ben}"/>
+</p:commandButton>
+<p:commandButton value="Excluir"
+action="#{benControllerPedro.excluir}" >
+<f:setPropertyActionListener value="#{bem}" target="#{benControllerPedro.ben}"/>
+</p:commandButton>
+</p:column>
+
+	
+	</p:dataTable>
+	</h:form>
+	</h:body>
+</html>
